@@ -1,0 +1,59 @@
+{
+  "name": "Website",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "The website URL to crawl"
+    },
+    "name": {
+      "type": "string",
+      "description": "Friendly name for the website"
+    },
+    "last_crawl_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "crawling",
+        "completed",
+        "failed",
+        "none"
+      ],
+      "default": "none"
+    },
+    "last_crawled_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "none",
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "none"
+        },
+        "day_of_month": {
+          "type": "number",
+          "description": "Day of the month for monthly schedule (1-28)"
+        },
+        "day_of_week": {
+          "type": "string",
+          "description": "Day of the week for weekly schedule"
+        }
+      },
+      "default": {
+        "type": "none"
+      }
+    }
+  },
+  "required": [
+    "url",
+    "name"
+  ]
+}

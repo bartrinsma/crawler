@@ -1,0 +1,87 @@
+{
+    "name": "Crawl",
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "ID of the website being crawled"
+      },
+      "website_url": {
+        "type": "string",
+        "description": "URL of the website at the time of crawl"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "crawling",
+          "completed",
+          "failed"
+        ],
+        "default": "pending"
+      },
+      "pages_found": {
+        "type": "number",
+        "default": 0
+      },
+      "pages_crawled": {
+        "type": "number",
+        "default": 0
+      },
+      "errors_404": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "source_page": {
+              "type": "string"
+            },
+            "link_text": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "redirects_301": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "from_url": {
+              "type": "string"
+            },
+            "to_url": {
+              "type": "string"
+            },
+            "source_page": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "seo_issues": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "issue_type": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "website_id",
+      "website_url"
+    ]
+  }
